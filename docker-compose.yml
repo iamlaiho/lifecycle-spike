@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  app-postgres:
+    image: postgres:15.1-alpine
+    container_name: lifecycle-spike-postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - app-postgres:/var/lib/postgresql/data
+
+volumes:
+  app-postgres:
